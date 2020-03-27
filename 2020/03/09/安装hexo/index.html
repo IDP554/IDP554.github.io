@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>安装hexo | 李大炮</title><meta name="description" content="使用hexo + GitHub 搭建个人博客第一步"><meta name="keywords" content="超详细教程,hexo"><meta name="author" content="李大炮"><meta name="copyright" content="李大炮"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://hm.baidu.com"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="U2vXYOwMWr"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="安装hexo"><meta name="twitter:description" content="使用hexo + GitHub 搭建个人博客第一步"><meta name="twitter:image" content="https://ae01.alicdn.com/kf/Hc535d3eba61d471088e53cd2f5853197K.jpg"><meta property="og:type" content="article"><meta property="og:title" content="安装hexo"><meta property="og:url" content="http://120.24.204.227/2020/03/09/%E5%AE%89%E8%A3%85hexo/"><meta property="og:site_name" content="李大炮"><meta property="og:description" content="使用hexo + GitHub 搭建个人博客第一步"><meta property="og:image" content="https://ae01.alicdn.com/kf/Hc535d3eba61d471088e53cd2f5853197K.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      now = new Date();
+      hour = now.getHours();
+      isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><link rel="canonical" href="http://120.24.204.227/2020/03/09/%E5%AE%89%E8%A3%85hexo/"><link rel="prev" title="Markdown使用技巧" href="http://120.24.204.227/2020/03/09/Markdown%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e30c50a0c16aff2da2cd5d2533d29dc0";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"http://lidapao.top/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"languages":{"author":"作者: 李大炮","link":"链接: undefined","source":"来源: 李大炮","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"title":"Snackbar.bookmark.title","message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#38d37e","bgDark":"#227330","position":"bottom-left"},
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'none',
+  isFontAwesomeV5: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false
+}</script><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">6</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">8</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-paper-plane-o"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-ellipsis-h" aria-hidden="true"></i><span> 更多</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-headphones"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-instagram"></i><span> Vlog</span></a></li><li><a class="site-page" href="/works/"><i class="fa-fw fa fa-code"></i><span> 作品</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#开始安装"><span class="toc-number">1.</span> <span class="toc-text">开始安装</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#一-输入hexo官网上的安装命令"><span class="toc-number">1.1.</span> <span class="toc-text">一.输入hexo官网上的安装命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#二-输入第二行命令"><span class="toc-number">1.2.</span> <span class="toc-text">二.输入第二行命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#三-输入进入blog文件夹命令"><span class="toc-number">1.3.</span> <span class="toc-text">三.输入进入blog文件夹命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#四-随后输入"><span class="toc-number">1.4.</span> <span class="toc-text">四.随后输入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#五-输入"><span class="toc-number">1.5.</span> <span class="toc-text">五.输入</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div id="web_bg" data-type="color"></div><div class="post-bg" id="nav" style="background-image: url(https://ae01.alicdn.com/kf/Hc535d3eba61d471088e53cd2f5853197K.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">李大炮</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-paper-plane-o"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-ellipsis-h" aria-hidden="true"></i><span> 更多</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-headphones"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-instagram"></i><span> Vlog</span></a></li><li><a class="site-page" href="/works/"><i class="fa-fw fa fa-code"></i><span> 作品</span></a></li></ul></div></div></span><span class="pull_right" id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title"><div class="posttitle">安装hexo</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-03-09<span class="post-meta__separator">|</span><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-03-27</time><span class="post-meta__separator">|</span><span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/hexo/">hexo</a></span><div class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">941</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 3 分钟</span><div class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2020/03/09/%E5%AE%89%E8%A3%85hexo/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/03/09/%E5%AE%89%E8%A3%85hexo/" itemprop="commentCount"></span></a></div></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><p>注意，用hexo搭建的博客是静态的网站。</p>
+<p>最开始，需要先安装两个依赖</p>
+<p>node.js   和  git</p>
+<p>node.js网址： <a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">https://nodejs.org/zh-cn/</a></p>
+<p>git网址：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a></p>
+<p>选择好跟你电脑一样的平台点击下载并安装。</p>
+<p>node.js安装成功后，开始菜单里面(win键)会出现以下几个程序，表示安装成功。</p>
+<img src="/img/loading.gif" style="zoom:67%;" / class="lazyload" data-src="https://ae01.alicdn.com/kf/H7c195b2722324f098ed7ce0dc3359740P.png">
+
+<p>git安装成功后会出现以下几个程序</p>
+<img src="/img/loading.gif" style="zoom: 67%;" / class="lazyload" data-src="https://ae01.alicdn.com/kf/H505ee628c4c94a08baa03c0a0325f981e.png">
+
+<p>—-git安装成功后，会在环境变量中path中自动加入一条git的cmd路径进去，如果没有，务必手动加上去</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">C:\Program Files\Git\cmd</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h4><p>注意⚠  以下所有命令行全部忽略最前面的美元符号</p>
+<blockquote>
+<p>安装hexo会下载一份代码下来，而我们要做的就是修改下载好的代码</p>
+<p>所以首先我们得找个地方存储下载下来得文件</p>
+<p>比如我在D盘新建了一个hexo的文件夹，那么安装以后我就可以去D盘的hexo文件下找到该代码</p>
+</blockquote>
+<p>当文件夹创建完成后，我们要把<strong>git</strong>的执行路径设置成我们的文件路径</p>
+<p>比如我的文件夹是<strong>D盘的hexo文件夹</strong></p>
+<p>那么</p>
+<p>打开<strong>Git Bash</strong>后</p>
+<p>我们输入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd d:&#x2F;hexo</span><br></pre></td></tr></table></figure>
+
+<p>Git Bash的路径就会变成这样👇</p>
+<img src="/img/loading.gif" alt="Git路径" style="zoom: 80%;" / class="lazyload" data-src="https://ae01.alicdn.com/kf/H2abb70bf4a8442aa9674b10135175299C.png">
+
+<p>之后还可以输入命令行 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ node -v</span><br></pre></td></tr></table></figure>
+
+<p>来查看node.js的版本 (博主的是v12.16.1)</p>
+<p>好了开始正题</p>
+<h5 id="一-输入hexo官网上的安装命令"><a href="#一-输入hexo官网上的安装命令" class="headerlink" title="一.输入hexo官网上的安装命令"></a>一.输入hexo官网上的安装命令</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+
+<p>命令行输入后(点击回车后)，可能会没有动静，稍等片刻，博主第一次等了155s才出来(因为没动静还退过一次…)</p>
+<p>实在是很久没动静，建议切换网络！</p>
+<h5 id="二-输入第二行命令"><a href="#二-输入第二行命令" class="headerlink" title="二.输入第二行命令"></a>二.输入第二行命令</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo init blog</span><br></pre></td></tr></table></figure>
+
+<p>等了很久，不过一直有进度显示…(可能是网络原因)</p>
+<p>期间可能会出现下面这个…</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">INFO  Install dependencies</span><br></pre></td></tr></table></figure>
+
+<p>这个并不代表完成，这个表示您正在安装依赖项</p>
+<p>如果你卡着很久了，说明你的网络有问题，可以试试其他网络(博主忍不住动用了自己的流量)</p>
+<p>换了其他网络也不行，建议架个梯子(vpn)</p>
+<p>直到出现了</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">INFO  Start blogging with Hexo!</span><br></pre></td></tr></table></figure>
+
+<p>就OK啦。</p>
+<p>接下来你可以输入 ls 命令查看当前路径下的文件夹</p>
+<p>会有一个叫做 blog 的文件夹</p>
+<p>不看也行..</p>
+<h5 id="三-输入进入blog文件夹命令"><a href="#三-输入进入blog文件夹命令" class="headerlink" title="三.输入进入blog文件夹命令"></a>三.输入进入blog文件夹命令</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd blog</span><br></pre></td></tr></table></figure>
+
+<p>这段命令的意思是进入blog文件夹</p>
+<p>进入之后  上面会出现黄色的 *<em>/d/hexo/blog *</em> 表示进入了blog文件夹</p>
+<h5 id="四-随后输入"><a href="#四-随后输入" class="headerlink" title="四.随后输入"></a>四.随后输入</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+
+<p>然后继续等待…</p>
+<p>博主才等待了15.595s就好了(因为用的手机流量)</p>
+<p>终于到最后一步了！！！</p>
+<h5 id="五-输入"><a href="#五-输入" class="headerlink" title="五.输入"></a>五.输入</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>不久就会显示出：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http:&#x2F;&#x2F;localhost:4000 . Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
+
+<p>意思是：</p>
+<p>安装已经完成，博客已经在<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> (本地)上运行，Ctrl+C可以停止。</p>
+<p>如果你想直接查看地址的话，在<strong>git</strong>界面，按住(不放)Ctrl键，然后鼠标划到这个网址4000的位置，这个时候网址下面会出现一条下划线，就在这个时候，点击鼠标左键打开。</p>
+<p><img src="/img/loading.gif" alt="点击这个" class="lazyload" data-src="https://ae01.alicdn.com/kf/H8fdce1530d56419c80468fc54d10cbc6h.png"></p>
+<p>当然你也可以直接在浏览器中输入这个网址。</p>
+<p>到现在就已经成功安装了。</p>
+<p>网站上会显示默认的一些样式。</p>
+<p>会像这样：</p>
+<img src="/img/loading.gif" style="zoom: 33%;" / class="lazyload" data-src="https://ae01.alicdn.com/kf/Hdbf8ed1c598d4ebf8f4ad646f66d71801.png">
+
+
+
+<p>安装完毕后，就可以去找下载下来的代码，修改成自己想要的样子，然后再配置。</p>
+<p>请看下篇——-配置hexo文件！！！</p>
+<p>觉得不错可以在底下的评论区留下你的脚印！！！</p>
+<p>如若觉得博主不易，欢迎打赏！！！</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">李大炮</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://120.24.204.227/2020/03/09/%E5%AE%89%E8%A3%85hexo/">http://120.24.204.227/2020/03/09/安装hexo/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://120.24.204.227" target="_blank">李大炮</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/">超详细教程    </a><a class="post-meta__tags" href="/tags/hexo/">hexo    </a></div><div class="post_share"><div class="social-share" data-image="https://ae01.alicdn.com/kf/H7cf5432fbec64efba9c8c0771f0676d5P.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wechat.JPG" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/alipay.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2020/03/09/Markdown%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"><img class="prev_cover lazyload" data-src="/img/post.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Markdown使用技巧</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/03/13/hexo修改_config.yml文件/" title="hexo修改配置文件"><img class="relatedPosts_cover lazyload"data-src="https://ae01.alicdn.com/kf/H54802157a747469da72b4e3c605a9832a.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-03-13</div><div class="relatedPosts_title">hexo修改配置文件</div></div></a></div><div class="relatedPosts_item"><a href="/2020/03/11/提取网易云音乐外链/" title="提取网易云音乐外链"><img class="relatedPosts_cover lazyload"data-src="https://ae01.alicdn.com/kf/H628ba0c936024f88b881caebaec9179fF.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-03-11</div><div class="relatedPosts_title">提取网易云音乐外链</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="/js/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: true,
+  verify: false,
+  appId: 'gFmOgvXzKjm7UbW6wldoMVWz-gzGzoHsz',
+  appKey: '8PJiFwO9CzrM1D4oazKSrXwM',
+  placeholder: '在这里留下你的足迹吧！',
+  avatar: 'retro',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" style="background-image: url(https://ae01.alicdn.com/kf/Hc535d3eba61d471088e53cd2f5853197K.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2020 By 李大炮</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">发送邮件给<a href="mailto:zf_554@icloud.com">李大炮</a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/search/local-search.js"></script></body></html>
